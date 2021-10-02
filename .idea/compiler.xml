@@ -3,6 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.7">
       <module name="Bird_Game.android" target="11" />
+      <module name="DragonGame.android" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

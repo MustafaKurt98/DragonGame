@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Bird_Game.iml" filepath="$PROJECT_DIR$/.idea/modules/Bird_Game.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android/Bird_Game.android.iml" filepath="$PROJECT_DIR$/.idea/modules/android/Bird_Game.android.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/Bird_Game.core.iml" filepath="$PROJECT_DIR$/.idea/modules/core/Bird_Game.core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/DragonGame.iml" filepath="$PROJECT_DIR$/.idea/modules/DragonGame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android/DragonGame.android.iml" filepath="$PROJECT_DIR$/.idea/modules/android/DragonGame.android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/DragonGame.core.iml" filepath="$PROJECT_DIR$/.idea/modules/core/DragonGame.core.iml" />
     </modules>
   </component>
 </project>
