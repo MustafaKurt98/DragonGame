@@ -38,7 +38,7 @@ public class BirdGame extends ApplicationAdapter {
     ShapeRenderer shapeRenderer;
     int score = 0;
     int scoredEnemy = 0;
-    int bestScore=0;
+    int bestScore = 0;
     BitmapFont font;
     BitmapFont font2;
     BitmapFont font3;
@@ -111,21 +111,21 @@ public class BirdGame extends ApplicationAdapter {
     @Override
     public void render() {
         batch.begin();
-        batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        if (gameState == 1) {
-            if (enemyX[scoredEnemy] < dragonX) {
+        batch.draw(background, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight()); //arka plani cizdir
+        if (gameState == 1) { //gameState oyun baslangicinda 0 oldugu icin ekrana dokunana kadar bu bolum calismayacak
+            if (enemyX[scoredEnemy] < dragonX) { //dusmanin x koordinati dragonun x koordinatini gectiginde (koordinat kuculdugunde) genel skoru arttırır
                 score++;
 
-                if (scoredEnemy < numberofEnemies - 1) {
+                if (scoredEnemy < numberofEnemies - 1) { //dusman skoru toplam dusman sayisina gelene kadar dusman skorunu arttir
                     scoredEnemy++;
                 } else {
                     scoredEnemy = 0;
                 }
             }
-            if (Gdx.input.justTouched()) {
-                velocity = -10;
+            if (Gdx.input.justTouched()) { //ekrana dokundugumuzda hiz faktorumuz olan velocity -10 default degerini alir.
+                velocity = -10; //bu sayede gravityinin karsisinda ters kuvvet yaratarak dragonumuzun ucmasini saglar
             }
-            for (int i = 0; i < numberofEnemies; i++) {
+            for (int i = 0; i < numberofEnemies; i++) { // toplam dusman sayisina gelene kadar
                 if (enemyX[i] < enemyWidht) {
                     enemyX[i] = enemyX[i] + numberofEnemies * distance;
                     enemyOffSet[i] = (random.nextFloat() - 0.5f) * (Gdx.graphics.getHeight() - 200);
@@ -142,9 +142,9 @@ public class BirdGame extends ApplicationAdapter {
                 enemyCircles2[i] = new Circle(enemyX[i] + enemyWidht / 2, Gdx.graphics.getHeight() / 2 + enemyOffSet2[i] + enemyHeight / 2, enemyWidht / 2);
                 enemyCircles3[i] = new Circle(enemyX[i] + enemyWidht / 2, Gdx.graphics.getHeight() / 2 + enemyOffSet3[i] + enemyHeight / 2, enemyWidht / 2);
             }
-            if (dragonY > 0) {
-                velocity = velocity + gravity;
-                dragonY = dragonY - velocity;
+            if (dragonY > 0 && dragonY < Gdx.graphics.getHeight()) { //dragonumuzun yuksekligi ust ve alt sinirlar icinde olmali yoksa gameState 2 olacagi icin oyun sona erecektir
+                velocity = velocity + gravity; //yeni hiz degerimiz yercekimi ve hizimizin toplamidir (yani yeni tiklamaya kadar dragonumuz dusmeye devam edecektir)
+                dragonY = dragonY - velocity; // dragonumuzun yeni yuksekligi, eski yuksekligi ve hiz degerinin toplamidir
             } else {
                 gameState = 2;
             }
@@ -153,12 +153,12 @@ public class BirdGame extends ApplicationAdapter {
                 gameState = 1;
             }
         } else if (gameState == 2) {
-            if (score>bestScore){
-                bestScore=score;
+            if (score > bestScore) {
+                bestScore = score;
             }
             font2.draw(batch, "Oyun Bitti! Yeniden baslamak için tekrar dokunun", 100, Gdx.graphics.getHeight() / 1.5f);
             font.draw(batch, "Skorunuz: " + score, Gdx.graphics.getWidth() / 3, Gdx.graphics.getHeight() / 2);
-            font3.draw(batch,"En iyi skorunuz: "+bestScore,Gdx.graphics.getWidth()/3,Gdx.graphics.getHeight()/3);
+            font3.draw(batch, "En iyi skorunuz: " + bestScore, Gdx.graphics.getWidth() / 3, Gdx.graphics.getHeight() / 3);
             if (Gdx.input.justTouched()) {
                 gameState = 1;
 
@@ -199,6 +199,7 @@ public class BirdGame extends ApplicationAdapter {
         }
         shapeRenderer.end();
     }
+
     @Override
     public void dispose() {
     }
